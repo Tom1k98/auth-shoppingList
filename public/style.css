@@ -1,0 +1,302 @@
+/* h2{
+    font-family: 'Lobster', cursive;
+} */
+p{
+    /* font-family: 'Lobster', cursive; */
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+h3{
+    display: inline;
+    /* font-family: 'Lobster'; */
+    font-style: normal;
+    font-size: 90%;
+}
+li{
+    font-family: 'Caveat', cursive;
+    list-style: none;
+    
+}
+body{
+    width: auto;
+    background-color: #fddb3a;
+    
+}
+.container{
+    position: relative;
+ 
+}
+
+
+.girl{
+    position: absolute;
+    
+    height: 580px;
+    
+border: 0;
+    z-index: 1;
+}
+.leg{
+    position: absolute;
+    top: 400px;
+    height: 170px;
+    left: 100px;
+}
+.boy{
+    position: absolute;
+    
+    height: 620px;
+    margin-left: 60%;
+   
+    
+    z-index: 1;
+}
+.obrazek{
+    
+    position: relative;
+    margin-top: 5%;
+    width: 90%;
+}
+@media(max-width:600px){
+    .girl{
+        
+        
+        height: 360px;
+        
+    
+    }
+    .leg{
+        top: 260px;
+        height: 90px;
+        left: 55px;
+    }
+    .list{
+        
+        top: 170px !important;
+       
+       margin-left: 50px !important;
+     
+       width: 250px;
+    }
+    .boy{
+     
+        
+        height: 400px;
+        
+    }
+    .upozorneni{
+        width: 100% !important;
+    }
+
+     p{
+         font-size: 1rem;
+     }   
+    
+}
+.list h2 {
+    padding: 5px;
+}
+
+.list{
+    position: relative;
+    top: 274px;
+   text-align: center;
+   margin-left: 82px;
+   color: #f6f4e6;
+   width: 60%;
+ 
+   padding-bottom: 1rem;
+   background-color: #52575d; 
+   border-radius: 10px;
+   border-style: solid;
+   border-color: #9b9fa5;
+}
+
+
+#addToList{
+    color: #f6f4e6;
+    background-color: #52575d;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: #f6f4e6 ;   
+}
+
+.btn{
+    background-color: #52575d;
+    color: #f6f4e6;
+    border-style: solid;
+    border-color: #f6f4e6 ;
+    border-radius: 5px;
+    padding: 0.5rem;
+
+}
+.btn:hover{
+    background-color: rgb(253, 221, 58);
+    border-style: none;
+    color: rgb(82, 87, 93);
+    background-position: left;
+
+}
+
+
+.btn-a{
+    background-color: #52575d;
+    color: #f6f4e6;
+    border-style: solid;
+    border-color: #f6f4e6 ;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background: linear-gradient(to left, rgb(82, 82, 93) 50%, rgb(253, 221, 58) 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+.btn-a:hover{
+    background-color: rgb(253, 221, 58);
+    border-style: none;
+    color: rgb(82, 87, 93);
+    background-position: left;
+
+}
+
+
+
+
+  
+
+
+
+
+
+
+
+/* TOM CSS */
+
+.item {
+    color: white !important;
+    display: block;
+    padding: 5px 20px;
+    list-style: none;
+    margin: 5px 0;
+}
+
+.delBtn {
+    background-color: #52575d;
+    color: #f6f4e6;
+    border-style: solid;
+    border-color: #f6f4e6 ;
+    border-radius: 5px;
+    padding: 5px 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.delBtn:hover{
+    background-color: #fddb3a;
+    border-style: none;
+    color: #52575d;
+}
+
+.checkbox {
+    background-color: blanchedalmond;
+}
+
+.upozorneni{
+    border: solid black 2px;
+    text-align: center;
+    background-color:white ;
+    border-radius: 10px;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    display: none;
+}
+
+.upozorneni.active {
+    display: block;
+    animation-name: anime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes anime {
+    from {
+        top: 0;
+    }
+    to {
+        top: 50%;
+    }
+}
+
+.gif{
+    height: 100px;
+    
+    text-align: center;
+}
+.btn-uprava{
+    background-color: #52575d;
+    color:#f6f4e6 ;
+    border-radius: 5px;
+    border-color: #f6f4e6;
+}
+.btn-uprava:hover{
+    background-color: #fddb3a;
+    border-style: none;
+    color: #52575d;
+}
+.mnozstvi-cena{
+    width: 20px;
+
+}
+.fas:hover{
+    animation: rotation 8s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+  /* login */
+  .loginl{
+    padding-bottom: 1rem;
+    background-color: #52575d; 
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #9b9fa5; 
+
+    width: 40rem;
+    margin: 3rem auto;
+}
+
+.text-center{
+    text-align: center;
+}
+.prihlaseni{
+    color: white;
+    display: inline-block;
+    font-size: 10px;
+}
+.login-nadpis{
+    
+    color: white;
+}
+a{
+    color: rgb(96, 167, 224);
+}
+.kosik{
+    height: 90px;
+    animation: go 3s infinite linear;
+}
+@keyframes go {
+    from {
+      transform: translateX(-50px);
+    }
+    to {
+      transform: translateX(50px);
+    }
+  }
+ 

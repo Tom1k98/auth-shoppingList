@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nákupní seznam</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Lobster&Roboto+Slab:wght@900&display=swap" rel="stylesheet">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/c156b99608.js" crossorigin="anonymous"></script>
+    <!-- ikona -->
+    <link rel="icon" href="shopping-list.png">
+</head>
+<body>
+<div class="container">
+   <div class="cover">
+       <img class="girl" src="divka.png" alt="dívka">
+       <img src="seznam-noha.png" alt="" class="leg">
+       <img src="boy2.png" alt="" class="boy">
+       <!-- <img src="neco.jpg" alt="" class="obrazek"> -->
+   </div>
+   <div class="list">
+     
+      <h2 >
+   Nákupní seznam
+ </h2>
+   <input id="addToList" type="text" /> 
+   <button class="btn" type="submit"><i class="fas fa-shopping-cart"></i></button> <br>
+
+  <h3>Množství</h3> <input id="addToList" class="mnozstvi-cena" type="text" /> 
+
+   <h3>Cena</h3><input id="addToList" class="mnozstvi-cena" type="text" /> 
+   <button class="btn" type="submit"><i class="fas fa-calculator"></i></button>
+
+ 
+
+ <ul id="shoppingList">
+   
+ </ul>
+ 
+ <div class="btn-a delBtn">
+  <i class="fas fa-trash"></i>
+</div>
+  
+   </div>
+</div>
+
+<div class="upozorneni">
+   <p>Opravdu si přejete smazat celý seznam?</p>
+   <img class="gif" src="https://media.giphy.com/media/12lPDSEeDIIR0I/giphy.gif" alt=""> <br>
+   <button class="btn" type="submit" id="ano">Ano</button>
+   <button class="btn" type="submit" id="ne">Ne</button>
+</div>
+<!-- <div class="uprava">
+   <button class="btn-uprava"><i class="far fa-edit"></i></button>
+</div> -->
+
+<!-- JQR -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- JVS -->
+    <script src="index.js"></script>
+</body>
+</html>
