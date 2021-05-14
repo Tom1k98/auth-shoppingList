@@ -8,16 +8,16 @@
     <title>Prihlaseni</title>
   </head>
   <body>
-    <form action="" class="loginl">
+    <form action="/login" class="loginl" method="POST">
       <div class="text-center">
         <h2 class="login-nadpis">Přihlásit se do nákupního seznamu</h2>
         <img class="kosik" src="shopping-cart.svg" alt="" />
         <div>
           <p class="prihlaseni">Email</p>
-          <input type="email" /> <br />
+          <input type="email" name="username" /> <br />
           <p class="prihlaseni">Heslo</p>
-          <input type="password" /> <br />
-          <button class="btn-a">Přihlásit se</button>
+          <input type="password" name="password" /> <br />
+          <button type="submit" class="btn-a">Přihlásit se</button>
           <h5 class="login-nadpis">
             Nemáte účet? <a href="/registrace">Zaregistrujte se</a>
           </h5>

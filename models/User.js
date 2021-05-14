@@ -4,11 +4,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    require: true,
+    dropDups: true,
   },
   password: {
     type: String,
-    require: true,
   },
 });
 

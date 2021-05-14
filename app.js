@@ -6,8 +6,16 @@ const passport = require("passport");
 const session = require("express-session");
 const connectEnsureLogin = require("connect-ensure-login");
 const User = require("./models/User");
+(LocalStrategy = require("passport-local")), require("dotenv").config();
 
-require("dotenv").config();
+const mongoUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.eznnv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+mongoose
+  .connect(mongoUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((msg) => console.log("connection to mongo ok"))
+  .catch((err) => console.log(err));
 
 app.use(
   session({
@@ -21,29 +29,13 @@ app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(User.createStrategy());
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-const mongoUrl = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.eznnv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-mongoose
-  .connect(mongoUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((msg) => console.log("connection to mongo ok"))
-  .catch((err) => console.log(err));
 
 app.get("/registrace", (req, res) => {
   res.sendFile(__dirname + "/signin.html");
@@ -53,25 +45,44 @@ app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/login.html");
 });
 
-app.post("/registrace", (req, res) => {
+app.post("/registrace", function (req, res) {
   User.register(
-    { username: req.body.email },
+    new User({ username: req.body.email }),
     req.body.password,
-    (err, user) => {
+    function (err, user) {
       if (err) {
         console.log(err);
-        res.redirect("/registrace");
-      } else {
-        User.authenticate("local")(req, res, () => {
-          res.redirect("/");
-        });
+        return res.sendFile(__dirname + "/index.html");
       }
+      User.authenticate("local")(req, res, function () {
+        res.redirect("/");
+      });
     }
   );
 });
 
-app.get("/", (req, res) => {
+app.get("/", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+
+    if (!user) {
+      return res.redirect("/login");
+    }
+
+    req.logIn(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+
+      return res.redirect("/");
+    });
+  })(req, res, next);
 });
 
 const port = process.env.PORT || 3333;
