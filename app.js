@@ -69,6 +69,7 @@ app.get("/registrace", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
+  console.log(req.isAuthenticated());
   res.sendFile(__dirname + "/login.html");
 });
 
@@ -89,7 +90,15 @@ app.post("/registrace", function (req, res) {
   });
 });
 
-app.get("/", (req, res) => {
+const protectRoute = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+};
+app.get("/", protectRoute, (req, res) => {
+  console.log(req.isAuthenticated());
   res.sendFile(__dirname + "/index.html");
 });
 
