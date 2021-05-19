@@ -113,7 +113,7 @@ delBtn.addEventListener("click", () => {
   if (allChecked.length > 0) {
     allChecked.map((del) => {
       deleteItem(del.id);
-      allChecked = allChecked.filter((value) => value["id"] != del.id);
+      allChecked = allChecked.filter((value) => value.id != del.id);
       if (allChecked.length === 0) {
         setTimeout(() => location.reload(), 1000);
       }
